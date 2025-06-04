@@ -3,12 +3,13 @@ import {useState} from "react";
 import SudokuSolver from "../util/SudokuSolver.ts";
 import Title from "./Title.tsx";
 import {d, m, y} from "../util/today.ts";
+import Github from "./Github.tsx";
 
 const Div = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -70%);
+  transform: translate(-50%, -60%);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -65,6 +66,7 @@ const Btn = styled.button`
   padding: 10px;
   width: 50%;
   border: none;
+  cursor: pointer;
 
   &:hover {
     background-color: #e1e1e1;
