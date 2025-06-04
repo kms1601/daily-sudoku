@@ -13,7 +13,7 @@ class Random {
     return num + from;
   }
 
-  public shuffle(arr: any[]) {
+  public shuffle(arr: number[]) {
     for (let i = 0; i < arr.length * 2; i++) {
       const a = this.nextRange(0, arr.length - 1);
       const b = this.nextRange(0, arr.length - 1);

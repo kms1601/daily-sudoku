@@ -24,7 +24,7 @@ class SudokuSolver {
         if (!this.answer.occupied(r, c)) {
           const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
           this.random.shuffle(nums);
-          for (let num of nums) {
+          for (const num of nums) {
             if (!sudoku.containsNum(num, r, c)) {
               this.answer.addNum(num, r, c);
               if (this.fillRandomly(sudoku)) return true;
@@ -40,7 +40,7 @@ class SudokuSolver {
 
   private createSudoku(max: number) {
     let count = 81;
-    const rowCol: number[number[]] = [];
+    const rowCol: number[][] = [];
     for (let r = 0; r < 9; r++) {
       for (let c = 0; c < 9; c++) {
         rowCol.push([r, c]);
@@ -49,9 +49,9 @@ class SudokuSolver {
     this.random.shuffle(rowCol);
     let tn = 0;
     const temp = new Sudoku();
-    while (max < count) {
-      if (rowCol.length === 0) break;
-      const cur: number[] = rowCol.pop();
+    while (max < count && rowCol.length > 0) {
+      const cur = rowCol.pop();
+      if (!cur) break;
       const r = cur[0], c = cur[1];
       tn = this.sudoku.grid[r][c];
       this.sudoku.removeNum(tn, r, c);
