@@ -3,7 +3,6 @@ import {useState} from "react";
 import SudokuSolver from "../util/SudokuSolver.ts";
 import Title from "./Title.tsx";
 import {d, m, y} from "../util/today.ts";
-import Github from "./Github.tsx";
 
 const Div = styled.div`
   position: absolute;
