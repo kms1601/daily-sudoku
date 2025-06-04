@@ -1,8 +1,17 @@
+import Sudoku from "./components/Sudoku.tsx";
+import styled from "styled-components";
+
+const Div = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+`;
+
 const App = () => {
   return (
-    <div>
-      <p>Hello, world!</p>
-    </div>
+    <Div>
+      <Sudoku></Sudoku>
+    </Div>
   );
 };
 
