@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import {useState} from "react";
-import SudokuSolver from "../util/SudokuSolver.ts";
+import SudokuSolver from "../utils/SudokuSolver.ts";
 import Title from "./Title.tsx";
-import {d, m, y} from "../util/today.ts";
+import {d, m, y} from "../utils/today.ts";
 
 const Div = styled.div`
   position: absolute;
@@ -78,7 +78,7 @@ const Btn = styled.button`
 
 const Sudoku = () => {
   const [show, setShow] = useState<boolean>(false);
-  const [sudokuSolver] = useState<SudokuSolver>(new SudokuSolver(Number(y + "" + m + "" + d) - 2));
+  const [sudokuSolver] = useState<SudokuSolver>(new SudokuSolver(Number(y + "" + m + "" + d)));
 
   const handleShow = () => {
     setShow(!show);

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {d, m, y} from "../util/today.ts";
+import {d, m, y} from "../utils/today.ts";
 
 const Div = styled.div`
   text-align: center;
