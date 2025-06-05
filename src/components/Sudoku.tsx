@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import {useLayoutEffect, useState, ReactNode} from "react";
+import type {ReactNode} from "react";
+import {useLayoutEffect, useState} from "react";
 import SudokuSolver from "../utils/SudokuSolver.ts";
 import Title from "./Title.tsx";
 import {d, m, y} from "../utils/today.ts";
@@ -78,7 +79,7 @@ const Btn = styled.button`
 
 const Sudoku = () => {
   const [show, setShow] = useState<boolean>(false);
-  const [sudokuSolver, setSudokuSolver] = useState<SudokuSolver>(null);
+  const [sudokuSolver, setSudokuSolver] = useState<SudokuSolver | null>(null);
 
   useLayoutEffect(() => {
     setSudokuSolver(new SudokuSolver(Number(y + "" + m + "" + d)));
