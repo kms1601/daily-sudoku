@@ -78,7 +78,7 @@ const Btn = styled.button`
 
 const Sudoku = () => {
   const [show, setShow] = useState<boolean>(false);
-  const [sudokuSolver] = useState<SudokuSolver>(new SudokuSolver(Number(y + "" + m + "" + d)));
+  const [sudokuSolver] = useState<SudokuSolver>(new SudokuSolver(Number(y + "" + m + "" + d) - 2));
 
   const handleShow = () => {
     setShow(!show);

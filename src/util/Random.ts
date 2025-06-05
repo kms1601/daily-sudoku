@@ -14,12 +14,11 @@ class Random {
   }
 
   public shuffle(arr: number[] | number[][]) {
-    for (let i = 0; i < arr.length * 2; i++) {
-      const a = this.nextRange(0, arr.length - 1);
-      const b = this.nextRange(0, arr.length - 1);
-      const temp = arr[a];
-      arr[a] = arr[b];
-      arr[b] = temp;
+    for (let i = 0; i < arr.length - 1; i++) {
+      const j = this.nextRange(i, arr.length - 1);
+      const temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
     }
   }
 }
