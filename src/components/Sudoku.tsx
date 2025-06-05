@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {useState} from "react";
+import {useLayoutEffect, useState, ReactNode} from "react";
 import SudokuSolver from "../utils/SudokuSolver.ts";
 import Title from "./Title.tsx";
 import {d, m, y} from "../utils/today.ts";
@@ -78,7 +78,11 @@ const Btn = styled.button`
 
 const Sudoku = () => {
   const [show, setShow] = useState<boolean>(false);
-  const [sudokuSolver] = useState<SudokuSolver>(new SudokuSolver(Number(y + "" + m + "" + d)));
+  const [sudokuSolver, setSudokuSolver] = useState<SudokuSolver>(null);
+
+  useLayoutEffect(() => {
+    setSudokuSolver(new SudokuSolver(Number(y + "" + m + "" + d)));
+  }, []);
 
   const handleShow = () => {
     setShow(!show);
@@ -87,36 +91,43 @@ const Sudoku = () => {
   return (
     <Div>
       <Title></Title>
-      <Table>
-        <tbody>
-        {
-          show
-            ?
-            <>
-              {sudokuSolver.answer.grid.map((row, index) => (
-                <Tr key={row + "" + index}>{row.map((col, index) => {
-                  return (
-                    <Td key={col + "" + index}>{col === 0 ? "" : col}</Td>
-                  ) as React.ReactNode;
-                })}</Tr>
-              ))}
-            </>
-            :
-            <>
-              {sudokuSolver.sudoku.grid.map((row, index) => (
-                <Tr key={row + "" + index}>{row.map((col, index) => {
-                  return (
-                    <Td key={col + "" + index}>{col === 0 ? "" : col}</Td>
-                  ) as React.ReactNode;
-                })}</Tr>
-              ))}
-            </>
-        }
-        </tbody>
-      </Table>
-      <BtnDiv>
-        <Btn onClick={handleShow}>{show ? "Hide solution" : "Solution"}</Btn>
-      </BtnDiv>
+      {
+        (sudokuSolver
+          ?
+          <>
+            <Table>
+              <tbody>
+              {
+                show
+                  ?
+                  <>
+                    {sudokuSolver.answer.grid.map((row, index) => (
+                      <Tr key={row + "" + index}>{row.map((col, index) => {
+                        return (
+                          <Td key={col + "" + index}>{col === 0 ? "" : col}</Td>
+                        ) as ReactNode
+                      })}</Tr>
+                    ))}
+                  </>
+                  :
+                  <>
+                    {sudokuSolver.sudoku.grid.map((row, index) => (
+                      <Tr key={row + "" + index}>{row.map((col, index) => {
+                        return (
+                          <Td key={col + "" + index}>{col === 0 ? "" : col}</Td>
+                        ) as ReactNode
+                      })}</Tr>
+                    ))}
+                  </>
+              }
+              </tbody>
+            </Table>
+            <BtnDiv>
+              <Btn onClick={handleShow}>{show ? "Hide solution" : "Solution"}</Btn>
+            </BtnDiv>
+          </>
+          : <></>) as ReactNode
+      }
     </Div>
   );
 };
